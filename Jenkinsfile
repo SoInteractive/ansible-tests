@@ -46,7 +46,8 @@ pipeline {
           sh '''
             PATCH=0
             MINOR=0
-            if [ $(expr $(git log -1 --pretty=%B) : "Merge pull request.*/feature.*") -eq 1 ]; then MINOR=1; else PATCH=1; fi
+            LAST=$(git log -1 --pretty=%B)
+            if [ $(expr "$LAST" : "Merge pull request.*/feature.*") -eq 1 ]; then MINOR=1; else PATCH=1; fi
             git tag $(git tag | tail -n1 | awk -F '.' '{print $1"."($2+$MINOR)"."($3+$PATCH)}')
             git push https://${GITHUB_TOKEN}:@${GIT_URL.replace( 'https://', '')} --tags
           '''
