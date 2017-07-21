@@ -7,6 +7,6 @@ verifier:
   name: testinfra
 docker:
   containers:
-    - name: hetzner-xenial
+    - name: tests-xenial
       image: ubuntu
       image_version: xenial
