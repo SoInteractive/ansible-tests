@@ -7,8 +7,6 @@ install:
   - pip install molecule==1.25.0
   - pip install docker
 script:
-  - mkdir -p .molecule/roles
-  - ansible-galaxy install -r requirements.yml -p .molecule/roles/.
   - molecule syntax
   - molecule create
   - molecule converge
