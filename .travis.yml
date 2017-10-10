@@ -25,6 +25,7 @@ deploy:
   script: git push https://${GH_TOKEN}:@${GIT_URL} --tags
   on:
     branch: master
+#do not start when tag is added
 branches:
   except:
     - /^\d+\.\d+\.\d+$/
