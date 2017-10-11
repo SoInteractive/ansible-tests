@@ -40,6 +40,6 @@ after_success:
   - >
     curl -X POST --data-urlencode "payload={\"username\": \"soi\", \"text\": \"$MESSAGE\", \"icon_url\": \"https://maxcdn.icons8.com/office/PNG/512/Programming/bot_80-512.png\"}" "$MM_WEBHOOK"
 after_failure:
-  - if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then export MESSAGE="Travis build no. $TRAVIS_BUILD_NUMBER has failed. Pull request no. $TRAVIS_PULL_REQUEST can be found [here](https://github.com/${TRAVIS_REPO_SLUG}/pull/${TRAVIS_PULL_REQUEST})."  ; else export MESSAGE="Travis build no. $TRAVIS_BUILD_NUMBER has failed. Check for problems [here](https://github.com/${TRAVIS_REPO_SLUG}/tree/master)."; fi
+  - if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then export MESSAGE="Travis build no. $TRAVIS_BUILD_NUMBER has failed. Pull request no. $TRAVIS_PULL_REQUEST can be found [here](https://github.com/${TRAVIS_REPO_SLUG}/pull/${TRAVIS_PULL_REQUEST})."  ; else export MESSAGE="Travis build no. $TRAVIS_BUILD_NUMBER has failed. You made a terrible mistake by pushing directly do master branch! Check for problems [here](https://github.com/${TRAVIS_REPO_SLUG}/tree/master)."; fi
   - >
     curl -X POST --data-urlencode "payload={\"username\": \"soi\", \"text\": \"$MESSAGE\", \"icon_url\": \"https://maxcdn.icons8.com/office/PNG/512/Programming/bot_80-512.png\"}" "$MM_WEBHOOK"
