@@ -28,7 +28,8 @@ deploy:
 #do not start when tag is added
 branches:
   only:
-  - master
+    - master
+tags:
   except:
     - /^\d+\.\d+\.\d+$/
 #notifications:
