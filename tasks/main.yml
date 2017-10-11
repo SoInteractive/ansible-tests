@@ -1,2 +1,5 @@
 ---
 - debug: msg="Test ok!!!"
+
+- naame: FAILED
+task fail just to check travis
