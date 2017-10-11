@@ -44,4 +44,4 @@ after_failure:
   - export GIT_COMMITER=$(git show -s --pretty=%an)
   - if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then export MESSAGE="Travis build no. $TRAVIS_BUILD_NUMBER has failed. Pull request no. $TRAVIS_PULL_REQUEST can be found [here](https://github.com/${TRAVIS_REPO_SLUG}/pull/${TRAVIS_PULL_REQUEST})."  ; else export MESSAGE="Travis build no. $TRAVIS_BUILD_NUMBER has failed. @all please check for problems on branch [master](https://github.com/${TRAVIS_REPO_SLUG}/tree/master) which was pushed by ${GIT_COMMITER}."; fi
   - >
-    curl -X POST --data-urlencode "payload={\"username\": \"soi\", \"text\": \"$MESSAGE\", \"icon_url\": \"https://maxcdn.icons8.com/office/PNG/512/Programming/bot_80-512.png\"}" "$MM_WEBHOOK"
+    curl -X POST --data-urlencode "payload={\"username\": \"soi\", \"color\": \"red\", \"text\": \"$MESSAGE\", \"icon_url\": \"https://maxcdn.icons8.com/office/PNG/512/Programming/bot_80-512.png\"}" "$MM_WEBHOOK"
