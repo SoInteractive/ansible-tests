@@ -2,7 +2,7 @@
 
 function success {
   GIT_TAG=$([[ "$TRAVIS_COMMIT_MESSAGE" =~ ("Merge pull request".*/feature.*) ]] && git semver --next-minor || git semver --next-patch )
-
+  echo $GIT_TAG
   if [ "$TRAVIS_PULL_REQUEST" != "false" ]
   then
     MESSAGE="Travis [build no. ${TRAVIS_BUILD_NUMBER}](travis-ci.org/${TRAVIS_REPO_SLUG}/builds/${TRAVIS_BUILD_ID}) has finished successfully. Pull request no. ${TRAVIS_PULL_REQUEST} opened by ${GIT_COMMITER} can be found [here](https://github.com/${TRAVIS_REPO_SLUG}/pull/${TRAVIS_PULL_REQUEST})."
