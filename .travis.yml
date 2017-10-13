@@ -3,7 +3,7 @@ language: python
 services:
   - docker
 install:
-  - pip install ansible==2.3.2 molecule==1.25.0 docker
+  - pip install ansible==2.3.2 molecule==1.25.0 docker git-semver
 script:
   - if [ -f requirements.yml ]; then ansible-galaxy install -r requirements.yml -p .molecule/roles/. ; fi
   - molecule syntax
@@ -15,7 +15,7 @@ script:
 before_deploy:
   - git config --global user.email "soibot@sointeractive.pl"
   - git config --global user.name "soi-bot"
-  - export GIT_TAG=$([[ "$TRAVIS_COMMIT_MESSAGE" =~ ("Merge pull request".*/feature.*) ]] && git describe --abbrev=0 --tags | awk -F '.' '{print $1"."($2+1)"."0}' || git describe --abbrev=0 --tags | awk -F '.' '{print $1"."$2"."($3+1)}')
+  - export GIT_TAG=$([[ "$TRAVIS_COMMIT_MESSAGE" =~ ("Merge pull request".*/feature.*) ]] && git semver --next-minor || git semver --next-patch )
   - git tag $GIT_TAG -a -m "Generated tag from TravisCI for build $TRAVIS_BUILD_NUMBER"
   - export GIT_URL=$(git config --get remote.origin.url)
   - export GIT_URL=${GIT_URL#*//}
