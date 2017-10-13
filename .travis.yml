@@ -28,7 +28,5 @@ tags:
     - /^\d+\.\d+\.\d+$/
 #notifications:
 #    webhooks: https://galaxy.ansible.com/api/v1/notifications/
-after_success:
-  - ./.travis/notification.sh
-after_failure:
+after_script:
   - ./.travis/notification.sh
