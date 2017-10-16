@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function success {
-  GIT_TAG=$([[ "$TRAVIS_COMMIT_MESSAGE" =~ ("Merge pull request".*/feature.*) ]] && git semver --next-minor || git semver --next-patch )
+  GIT_TAG=$(git semver)
   echo $GIT_TAG
   if [ "$TRAVIS_PULL_REQUEST" != "false" ]
   then
@@ -9,6 +9,7 @@ function success {
   else
     MESSAGE="Travis [build no. ${TRAVIS_BUILD_NUMBER}](travis-ci.org/${TRAVIS_REPO_SLUG}/builds/${TRAVIS_BUILD_ID}) has finished successfully. Tag [${GIT_TAG}](https://github.com/${TRAVIS_REPO_SLUG}/releases/tag/${GIT_TAG}) was pushed to master by ${GIT_COMMITER}."
   fi
+  echo $MESSAGE
 }
 
 function failure {
@@ -20,8 +21,14 @@ function failure {
   fi
 }
 
+if [ -z "$MM_WEBHOOK" ]
+then
+  echo "MM_WEBHOOK variable is not set!"
+  exit 0
+fi
 
 GIT_COMMITER=$(git show -s --pretty=%an)
+echo $GIT_COMMITER
 if [ "$TRAVIS_TEST_RESULT" == "0" ]
 then
   success

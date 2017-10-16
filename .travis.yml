@@ -6,12 +6,7 @@ install:
   - pip install ansible==2.3.2 molecule==1.25.0 docker git-semver
 script:
   - if [ -f requirements.yml ]; then ansible-galaxy install -r requirements.yml -p .molecule/roles/. ; fi
-  - molecule syntax
-  - molecule create
-  - molecule converge
-  - molecule idempotence
-  - molecule verify
-  - molecule destroy
+  - molecule test
 deploy:
   provider: script
   skip_cleanup: true
@@ -26,7 +21,7 @@ branches:
 tags:
   except:
     - /^\d+\.\d+\.\d+$/
-#notifications:
-#    webhooks: https://galaxy.ansible.com/api/v1/notifications/
+notifications:
+    webhooks: https://galaxy.ansible.com/api/v1/notifications/
 after_script:
   - ./.travis/notification.sh
