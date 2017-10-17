@@ -1,2 +1,6 @@
 ---
 - debug: msg="Test ok!!!"
+
+- name: fail test
+  command: non_existing_command
+  failed_when: true
