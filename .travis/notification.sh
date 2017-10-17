@@ -17,7 +17,7 @@ function failure {
   then
     MESSAGE="Travis [build no. ${TRAVIS_BUILD_NUMBER}](travis-ci.org/${TRAVIS_REPO_SLUG}/builds/${TRAVIS_BUILD_ID}) has failed. Pull request no. ${TRAVIS_PULL_REQUEST} opened by ${GIT_COMMITER} can be found here: [${TRAVIS_REPO_SLUG}](https://github.com/${TRAVIS_REPO_SLUG}/pull/${TRAVIS_PULL_REQUEST})."
   else
-    MESSAGE="Travis [build no. ${TRAVIS_BUILD_NUMBER}](travis-ci.org/${TRAVIS_REPO_SLUG}/builds/${TRAVIS_BUILD_ID}) has failed. Please check for problems on branch [master](https://github.com/${TRAVIS_REPO_SLUG}/tree/master) which was pushed by ${GIT_COMMITER} on repository [${TRAVIS_REPO_SLUG}](https://github.com/${TRAVIS_REPO_SLUG})."
+    MESSAGE="Travis [build no. ${TRAVIS_BUILD_NUMBER}](travis-ci.org/${TRAVIS_REPO_SLUG}/builds/${TRAVIS_BUILD_ID}) has failed. Please check for problems on branch [${TRAVIS_REPO_SLUG}](https://github.com/${TRAVIS_REPO_SLUG}/tree/master) which was pushed by ${GIT_COMMITER}."
   fi
 }
 
