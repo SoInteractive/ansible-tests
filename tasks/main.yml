@@ -1,6 +1,2 @@
 ---
 - debug: msg="Test ok!!!"
-
-- naameewf: test not ok
-  command: non_existing_cmd
-  failed_when: true
