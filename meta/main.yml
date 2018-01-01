@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   author: Pawel Krupa
-  description: Test Jenkinsfile
+  description: Test CI
   company: Sointeractive
   license: MIT
   min_ansible_version: 2.0
