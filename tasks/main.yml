@@ -1,5 +1,5 @@
 ---
 - name: Ensure directory exists
   file:
-    path: /opt/ok
+    path: /opt/test
     state: directory
